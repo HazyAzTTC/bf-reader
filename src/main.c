@@ -1,0 +1,92 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ==     +:           */
+/*   main.c                                                -=   +-:           */
+/*                                                        ==-  .===           */
+/*   By: hazy_az <coding.hazyaz@proton.me>                *=*:::++*-..        */
+/*                                                        =+*=+:=**---.       */
+/*   Created: 2026/01/28 17:50:01 by hazy_az              .:=#**+--=**++:     */
+/*   Updated: 2026/02/09 02:44:21 by hazy_az             .:-#=-+*==**+-..     */
+/*                                                       ..-=+==+=+--:..      */
+/*                                                       ...-===+==--::-:.    */
+/*                                                        .-:-===*+=----.     */
+/*                                                       .:--==+=++*#:--:.    */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+#include "esthetical.h"
+#include "error.h"
+
+//Verify with how many args the program is launched
+//and send feedback when necessary
+int	arg_nb_verif(int input)
+{
+	if (input == 1 || input == 2)
+		return (input);
+	else
+	{
+		if (input < 1)
+			error("NEAL");
+		else
+			error("TMAL");
+	}
+}
+
+//Checking if user input == default or debug
+int	check(char *input)
+{
+	int		index;
+	int		word;
+	char	*list_opt[2];
+
+	word = 0;
+	list_opt[0] = "default";
+	list_opt[1] = "debug";
+	while (word < 2)
+	{
+		index = 0;
+		while (input[index] == list_opt[word][index] && index < 8)
+		{
+			if (input[index] == '\0' && list_opt[word][index] == '\0')
+				return (word);
+			index++;
+		}
+		word++;
+	}
+	return (2);
+}
+
+//Writing info for user and launching with correct mode
+void	launching(int debug)
+{
+	if (debug == 0)
+		write(1, "\033[32mLaunching Program In Default Mode", 38);
+	else if (debug == 1)
+		write(1, "\033[36mLaunching Program In Debug Mode", 37);
+	else
+	{
+		write(2, "\e[47;31m/!\\Error While Reading", 30);
+		write(2, " Execution Mode/!\\\e[0m", 22);
+		write(1, "\n\033[32m==>Launching Program In Default Mode", 42);
+	}
+	waiter();
+	write(1, "\n", 1);
+	return ;
+}
+
+//First program function assuring correct parsing and execution
+int	main(int argc, char **argv)
+{
+	int	mode;
+
+	write(1, "\e[2K\r", 5);
+	if (arg_nb_verif(argc) == 2)
+	{
+		mode = check(argv[1]);
+		launching(mode);
+	}
+	else
+		launching(0);
+	return (0);
+}
