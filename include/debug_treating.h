@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ==     +:           */
-/*   esthetical.c                                          -=   +-:           */
+/*   debug_treating.h                                      -=   +-:           */
 /*                                                        ==-  .===           */
 /*   By: hazy_az <coding.hazyaz@proton.me>                *=*:::++*-..        */
 /*                                                        =+*=+:=**---.       */
-/*   Created: 2026/01/28 17:51:43 by hazy_az              .:=#**+--=**++:     */
-/*   Updated: 2026/02/10 02:05:27 by hazy_az             .:-#=-+*==**+-..     */
+/*   Created: 2026/02/10 01:45:40 by hazy_az              .:=#**+--=**++:     */
+/*   Updated: 2026/02/10 01:51:01 by hazy_az             .:-#=-+*==**+-..     */
 /*                                                       ..-=+==+=+--:..      */
 /*                                                       ...-===+==--::-:.    */
 /*                                                        .-:-===*+=----.     */
@@ -14,21 +14,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <esthtical.h>
+#ifndef DEBUG_TREATING_H
+# define DEBUG_TREATING_H
 
-#include <unistd.h>
+int		fn_strlen(char *string);
+char	*fn_itoa(int number, int *grid, char *file);
+void	*anti_debug(char *string);
 
-//Doing a little waiting animation for x sec
-void	waiter(void)
-{
-	int	index;
-
-	index = 0;
-	while (index < 3)
-	{
-		sleep(1);
-		write(1, ".", 1);
-		++index;
-	}
-	write(1, "\033[0m", 4);
-}
+#endif

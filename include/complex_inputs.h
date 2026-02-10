@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ==     +:           */
-/*   esthetical.c                                          -=   +-:           */
+/*   complex_inputs.h                                      -=   +-:           */
 /*                                                        ==-  .===           */
 /*   By: hazy_az <coding.hazyaz@proton.me>                *=*:::++*-..        */
 /*                                                        =+*=+:=**---.       */
-/*   Created: 2026/01/28 17:51:43 by hazy_az              .:=#**+--=**++:     */
-/*   Updated: 2026/02/10 02:05:27 by hazy_az             .:-#=-+*==**+-..     */
+/*   Created: 2026/02/10 01:34:08 by hazy_az              .:=#**+--=**++:     */
+/*   Updated: 2026/02/10 01:56:27 by hazy_az             .:-#=-+*==**+-..     */
 /*                                                       ..-=+==+=+--:..      */
 /*                                                       ...-===+==--::-:.    */
 /*                                                        .-:-===*+=----.     */
@@ -14,21 +14,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <esthtical.h>
+#ifndef COMPLEX_INPUTS_H
+# define COMPLEX_INPUTS_H
 
-#include <unistd.h>
+void	debug_print(int *playground, int cursor, char *file);
+void	get_char(int *playground, int cursor, char *file);
+void	put_char(int *playground, int cursor);
+void	start_while(char *file, int *pos, int *playground, int *cursor);
 
-//Doing a little waiting animation for x sec
-void	waiter(void)
-{
-	int	index;
-
-	index = 0;
-	while (index < 3)
-	{
-		sleep(1);
-		write(1, ".", 1);
-		++index;
-	}
-	write(1, "\033[0m", 4);
-}
+#endif

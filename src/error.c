@@ -6,7 +6,7 @@
 /*   By: hazy_az <coding.hazyaz@proton.me>                *=*:::++*-..        */
 /*                                                        =+*=+:=**---.       */
 /*   Created: 2026/01/28 00:02:51 by hazy_az              .:=#**+--=**++:     */
-/*   Updated: 2026/02/09 02:43:42 by hazy_az             .:-#=-+*==**+-..     */
+/*   Updated: 2026/02/10 02:02:11 by hazy_az             .:-#=-+*==**+-..     */
 /*                                                       ..-=+==+=+--:..      */
 /*                                                       ...-===+==--::-:.    */
 /*                                                        .-:-===*+=----.     */
@@ -14,11 +14,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
 #include "error.h"
 
-//display error message with error code and abort programm
+#include <unistd.h>
+#include <stdlib.h>
+
+//Display error message with error code and abort programm
 void	error(char *error_code)
 {
 	system("clear");
@@ -31,7 +32,22 @@ void	error(char *error_code)
 	abort();
 }
 
-//free the malloced var (surely the grid) before calling error
+//Free the malloced char and int vars before calling error
+void	free_all_error(char *st_free, int *ar_free, char *error_code)
+{
+	free(st_to_free);
+	free(ar_to_free);
+	error(error_code);
+}
+
+//Free the malloced char var before calling error
+void	free_char_error(char *to_free, char *error_code)
+{
+	free(to_free);
+	error(error_code);
+}
+
+//Free the malloced int var before calling error
 void	free_int_error(int *to_free, char *error_code)
 {
 	free(to_free);

@@ -6,7 +6,7 @@
 /*   By: hazy_az <coding.hazyaz@proton.me>                *=*:::++*-..        */
 /*                                                        =+*=+:=**---.       */
 /*   Created: 2026/01/28 17:53:17 by hazy_az              .:=#**+--=**++:     */
-/*   Updated: 2026/02/09 02:48:09 by hazy_az             .:-#=-+*==**+-..     */
+/*   Updated: 2026/02/10 01:33:38 by hazy_az             .:-#=-+*==**+-..     */
 /*                                                       ..-=+==+=+--:..      */
 /*                                                       ...-===+==--::-:.    */
 /*                                                        .-:-===*+=----.     */
@@ -20,7 +20,7 @@
 int		*grid_init(void);
 char	*getting_file(char *path);
 void	input_to_action(char input, int *playground, int *cursor);
-void	interpret_file(char *path);
+void	interpret_file(char *path, int debug);
 void	parsing_complex(char *file, int *pos, int *playground, int *cursor);
 
 #endif

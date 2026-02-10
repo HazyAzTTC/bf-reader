@@ -6,7 +6,7 @@
 /*   By: hazy_az <coding.hazyaz@proton.me>                *=*:::++*-..        */
 /*                                                        =+*=+:=**---.       */
 /*   Created: 2026/01/28 17:50:01 by hazy_az              .:=#**+--=**++:     */
-/*   Updated: 2026/02/09 02:44:21 by hazy_az             .:-#=-+*==**+-..     */
+/*   Updated: 2026/02/10 02:33:10 by hazy_az             .:-#=-+*==**+-..     */
 /*                                                       ..-=+==+=+--:..      */
 /*                                                       ...-===+==--::-:.    */
 /*                                                        .-:-===*+=----.     */
@@ -15,8 +15,11 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "esthetical.h"
+#include <stdlib.h>
+
+#include "code.h"
 #include "error.h"
+#include "esthetical.h"
 
 //Verify with how many args the program is launched
 //and send feedback when necessary
@@ -57,9 +60,27 @@ int	check(char *input)
 	return (2);
 }
 
+//Prompt the user for the path of the brainfuck code file
+char	*get_path(void)
+{
+	char	*path;
+
+	system("clear");
+	path = malloc(8 * 300);
+	if (path == NULL)
+		error("PVCI");
+	write(1, "Please enter the path to your BF code:\n", 39);
+	read(0, path, 299);
+	system("clear");
+	path[300] = '\0';
+	return (path);
+}
+
 //Writing info for user and launching with correct mode
 void	launching(int debug)
 {
+	char	*path;
+
 	if (debug == 0)
 		write(1, "\033[32mLaunching Program In Default Mode", 38);
 	else if (debug == 1)
@@ -72,6 +93,8 @@ void	launching(int debug)
 	}
 	waiter();
 	write(1, "\n", 1);
+	path = get_path();
+	interpret_file(path, debug);
 	return ;
 }
 

@@ -6,7 +6,7 @@
 /*   By: hazy_az <coding.hazyaz@proton.me>                *=*:::++*-..        */
 /*                                                        =+*=+:=**---.       */
 /*   Created: 2026/01/28 17:51:05 by hazy_az              .:=#**+--=**++:     */
-/*   Updated: 2026/02/09 02:43:14 by hazy_az             .:-#=-+*==**+-..     */
+/*   Updated: 2026/02/10 03:08:25 by hazy_az             .:-#=-+*==**+-..     */
 /*                                                       ..-=+==+=+--:..      */
 /*                                                       ...-===+==--::-:.    */
 /*                                                        .-:-===*+=----.     */
@@ -14,10 +14,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "core.h"
+
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include "core.h"
+
+#include "complex_inputs.h"
+#include "debug_treating.h"
 #include "error.h"
 
 //Try to create the BF array. Close program on fail.
@@ -27,7 +31,7 @@ int	*grid_init(void)
 	int	index;
 
 	index = 0;
-	grid = malloc(120000);
+	grid = malloc(8 * 30000);
 	if (grid == NULL)
 		error("FIGM");
 	while (index < size)
@@ -58,7 +62,7 @@ char	*getting_file(char *path)
 	if (file_channel == -1)
 	{
 		close(file_channel);
-		error("FCBF");
+		free_char_error(file, "FCBF");
 	}
 	while (read(file_channel, file, 1) != 0)
 		file_size++;
@@ -103,15 +107,15 @@ void	interpret_file(char *path, int debug)
 	int		track;
 	char	*file;
 
-	size = 30000;
 	cursor = 0;
 	tracker = 0;
 	file = getting_file(path);
+	free (path);
+	if (debug == 0)
+		file = anti_debug(file);
 	grid = grid_init();
 	while (file[track])
 	{
-		if (file[track] == '#' && debug == 0)
-			;
 		else if (file[track] == '>' || file[track] == '<'
 			|| file[track] == '+' || file[track] == '-')
 			input_to_action(file[track], grid, &cursor);
@@ -129,12 +133,12 @@ void	interpret_file(char *path, int debug)
 void	parsing_complex(char *file, int *pos, int *playground, int *cursor)
 {
 	if (file[*pos] == '[')
-		start_while();
+		start_while(file, pos, playground, cursor);
 	else if (file[*pos] == ',')
-		get_char();
+		get_char(playground, cursor, file);
 	else if (file[*pos] == '.')
-		put_char();
+		put_char(playground, cursor);
 	else if (file[*pos] == '#')
-		debug_print();
+		debug_print(playground, cursor, file);
 	return ();
 }
