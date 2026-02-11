@@ -6,7 +6,7 @@
 /*   By: hazy_az <coding.hazyaz@proton.me>                *=*:::++*-..        */
 /*                                                        =+*=+:=**---.       */
 /*   Created: 2026/01/28 17:51:05 by hazy_az              .:=#**+--=**++:     */
-/*   Updated: 2026/02/11 18:47:53 by hazy_az             .:-#=-+*==**+-..     */
+/*   Updated: 2026/02/11 20:44:02 by hazy_az             .:-#=-+*==**+-..     */
 /*                                                       ..-=+==+=+--:..      */
 /*                                                       ...-===+==--::-:.    */
 /*                                                        .-:-===*+=----.     */
@@ -55,7 +55,7 @@ char	*getting_file(char *path)
 	int		file_size;
 	char	*file;
 
-	file_size = sizing(path);
+	file_size = sizing(path) + 1;
 	file_channel = open(path, O_RDONLY);
 	if (file_channel == -1)
 		free_close_error(path, file_channel, "FCBF");

@@ -6,7 +6,7 @@
 /*   By: hazy_az <coding.hazyaz@proton.me>                *=*:::++*-..        */
 /*                                                        =+*=+:=**---.       */
 /*   Created: 2026/01/28 00:02:51 by hazy_az              .:=#**+--=**++:     */
-/*   Updated: 2026/02/10 14:01:08 by hazy_az             .:-#=-+*==**+-..     */
+/*   Updated: 2026/02/11 20:44:46 by hazy_az             .:-#=-+*==**+-..     */
 /*                                                       ..-=+==+=+--:..      */
 /*                                                       ...-===+==--::-:.    */
 /*                                                        .-:-===*+=----.     */
@@ -29,7 +29,7 @@ void	error(char *error_code)
 	write(2, error_code, 4);
 	write(2, "\e[0m\nNow aborting execution ", 28);
 	write(2, "before anything else happens...\n\n", 32);
-	abort();
+	exit(1);
 }
 
 //Free the malloced char and int vars before calling error
