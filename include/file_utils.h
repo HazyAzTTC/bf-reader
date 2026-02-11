@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ==     +:           */
-/*   core.h                                                -=   +-:           */
+/*   file_utils.h                                          -=   +-:           */
 /*                                                        ==-  .===           */
 /*   By: hazy_az <coding.hazyaz@proton.me>                *=*:::++*-..        */
 /*                                                        =+*=+:=**---.       */
-/*   Created: 2026/01/28 17:53:17 by hazy_az              .:=#**+--=**++:     */
-/*   Updated: 2026/02/11 15:46:03 by hazy_az             .:-#=-+*==**+-..     */
+/*   Created: 2026/02/11 16:23:27 by hazy_az              .:=#**+--=**++:     */
+/*   Updated: 2026/02/11 16:24:54 by hazy_az             .:-#=-+*==**+-..     */
 /*                                                       ..-=+==+=+--:..      */
 /*                                                       ...-===+==--::-:.    */
 /*                                                        .-:-===*+=----.     */
@@ -14,13 +14,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CORE_H
-# define CORE_H
+#ifndef FILE_UTILS_H
+# define FILE_UTILS_H
 
-int		*grid_init(char *file);
-char	*getting_file(char *path);
-void	input_to_action(char input, int *playground, int *cursor);
-void	interpret_file(char *path, int debug);
-void	parsing_complex(char *file, int *pos, int *playground, int *cursor);
+int	sizing(char *path);
 
 #endif

@@ -3,7 +3,13 @@
 
 ## QUICK HOW TO USE
 
-For now? You can't, it's a WIP...
+It's a terminal program so launch it from terminal.<br>
+If you took the source code, if you are on Linux, just use the [Makefile](./MAKEDOC.md). Else, I don't know, GLHF.<br>
+When prompted enter the path to the file containing your Brainfuck code.<br>
+Then it will read and execute your Brainfuck code. Prompting you and displaying debug info when the code say so.<br>
+For debug info you'll have to execute program with the "debug" argument and you code must contain the # character where you want info.<br>
+<br>
+More information about brainfuck language [here](https://en.wikipedia.org/wiki/Brainfuck).
 
 ## METHODOLOGY NOTE
 
@@ -20,22 +26,33 @@ If you have to check the code here how it works:<br><br>
 
 ## ERROR CODES
 
-List before explanation (prototype):<br><br>
-	-**CCSR** ==> Can't Change Size of the Reader   *(core.c/getting_file)*<br><br>
-	-**CICR** ==> Can't Initialise Character Retriever   *(complex_inputs.c/get_char)*<br><br>
-	-**CIFR** ==> Can't Initialise File Reader   *(core.c/getting_file)*<br><br>
-	-**EWTD** ==> Error While Trying to Debug   *(debug_treating.c/fn_itoa)*<br><br>
-	-**FCBF** ==> File Can't Be Found   *(core.c/getting_file)*<br><br>
-	-**FCDR** ==> Fail Creating Debug Remover   *(debug_treating.c/anti_debug)*<br><br>
-	-**FIGM** ==> File to Initialise Grid Malloc   *(core.c/grid_init)*<br><br>
-	-**NEAL** ==> Not Enough Arguments at Launch   *(main.c/arg_nb_verif)*<br><br>
-	-**PVCI** ==> Path Variable Can't be Initialise   *(main.c/get_path)*<br><br>
-	-**TMAL** ==> Too Many Arguments at Launch   *(main.c/arg_nb_verif)*<br><br>
+List of error code with where it happens in code and definition:<br><br>
+	-**CGFS** ==> Can't Get File Size   *(file_utils.c/sizing)*<br>
+			The open() in the sizing function failed to open the file you've precised.<br><br>
+	-**CICR** ==> Can't Initialise Character Retriever   *(complex_inputs.c/fn_getchar)*<br>
+			Malloc failed to create the holder variable for getting char from user.<br><br>
+	-**CIFR** ==> Can't Initialise File Reader   *(core.c/getting_file)*<br>
+			Malloc failed to create the var that will store your bf code.<br><br>
+	-**EWTD** ==> Error While Trying to Debug   *(debug_treating.c/fn_itoa)*<br>
+			Malloc failed to create the str to display a number.<br><br>
+	-**FCBF** ==> File Can't Be Found   *(core.c/getting_file)*<br>
+			The open() in getting_file failed to open the file you've precised.<br><br>
+	-**FCDR** ==> Fail to Create Debug Remover   *(debug_treating.c/anti_debug)*<br>
+			Malloc failed to create the var that store your bf code without the # character.<br><br>
+	-**FIGM** ==> File to Initialise Grid Malloc   *(core.c/grid_init)*<br>
+			Malloc failed to create the array where your bf code should be executed.<br><br>
+	-**NEAL** ==> Not Enough Arguments at Launch   *(main.c/arg_nb_verif)*<br>
+			Program has been launched with 0 arguments (the program basic execution should make it at least 1).<br><br>
+	-**PVCI** ==> Path Variable Can't be Initialise   *(main.c/get_path)*<br>
+			Malloc failed to create the var storing the path of your bf code file.<br><br>
+	-**TMAL** ==> Too Many Arguments at Launch   *(main.c/arg_nb_verif)*<br>
+			Programm has been launche with more than 2 arguments (the program basic execution + default/debug mode makes it two).<br><br>
 
 ## AFTERWORDS
 
-Well this is just a project for getting more at ease with C languages (with pretty rude conditions?)<br>
+Well this is just a project for getting more at ease with C languages (with pretty rude conditions?) and joking with a friend.<br>
 If you want to use it, please help yourself, thank you, but to be fair I'll be surprised.<br>
 If you want to send me feedbacks, advice or criticism, I'm open to it as long as it's done in a civilised way (respecting other is respecting yourself)<br><br>
+Big thank you and shoutout to [@newgendaire2](https://github.com/newgendaire2) for being a very good friend even when I'm difficult and to be a funny chaotic human being!<br><br>
 Anyway, thank you, take care and stay hazy~~ <br><br>
 -Hazy_Az

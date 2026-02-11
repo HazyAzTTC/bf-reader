@@ -6,7 +6,7 @@
 /*   By: hazy_az <coding.hazyaz@proton.me>                *=*:::++*-..        */
 /*                                                        =+*=+:=**---.       */
 /*   Created: 2026/01/28 00:02:51 by hazy_az              .:=#**+--=**++:     */
-/*   Updated: 2026/02/10 02:02:11 by hazy_az             .:-#=-+*==**+-..     */
+/*   Updated: 2026/02/10 14:01:08 by hazy_az             .:-#=-+*==**+-..     */
 /*                                                       ..-=+==+=+--:..      */
 /*                                                       ...-===+==--::-:.    */
 /*                                                        .-:-===*+=----.     */
@@ -35,8 +35,8 @@ void	error(char *error_code)
 //Free the malloced char and int vars before calling error
 void	free_all_error(char *st_free, int *ar_free, char *error_code)
 {
-	free(st_to_free);
-	free(ar_to_free);
+	free(st_free);
+	free(ar_free);
 	error(error_code);
 }
 
@@ -44,6 +44,14 @@ void	free_all_error(char *st_free, int *ar_free, char *error_code)
 void	free_char_error(char *to_free, char *error_code)
 {
 	free(to_free);
+	error(error_code);
+}
+
+//Free the malloced char var and close the current open FD before calling error
+void	free_close_error(char *to_free, int to_close, char *error_code)
+{
+	free(to_free);
+	close(to_close);
 	error(error_code);
 }
 

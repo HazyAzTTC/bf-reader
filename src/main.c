@@ -6,7 +6,7 @@
 /*   By: hazy_az <coding.hazyaz@proton.me>                *=*:::++*-..        */
 /*                                                        =+*=+:=**---.       */
 /*   Created: 2026/01/28 17:50:01 by hazy_az              .:=#**+--=**++:     */
-/*   Updated: 2026/02/10 02:33:10 by hazy_az             .:-#=-+*==**+-..     */
+/*   Updated: 2026/02/11 15:42:03 by hazy_az             .:-#=-+*==**+-..     */
 /*                                                       ..-=+==+=+--:..      */
 /*                                                       ...-===+==--::-:.    */
 /*                                                        .-:-===*+=----.     */
@@ -17,7 +17,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-#include "code.h"
+#include "core.h"
 #include "error.h"
 #include "esthetical.h"
 
@@ -34,6 +34,7 @@ int	arg_nb_verif(int input)
 		else
 			error("TMAL");
 	}
+	return (3);
 }
 
 //Checking if user input == default or debug
@@ -63,16 +64,18 @@ int	check(char *input)
 //Prompt the user for the path of the brainfuck code file
 char	*get_path(void)
 {
+	int		end_path;
 	char	*path;
 
 	system("clear");
-	path = malloc(8 * 300);
+	path = malloc(300);
 	if (path == NULL)
 		error("PVCI");
 	write(1, "Please enter the path to your BF code:\n", 39);
-	read(0, path, 299);
+	end_path = read(0, path, 300);
+	end_path--;
 	system("clear");
-	path[300] = '\0';
+	path[end_path] = '\0';
 	return (path);
 }
 
@@ -109,7 +112,7 @@ int	main(int argc, char **argv)
 		mode = check(argv[1]);
 		launching(mode);
 	}
-	else
+	else if (arg_nb_verif(argc) != 3)
 		launching(0);
 	return (0);
 }

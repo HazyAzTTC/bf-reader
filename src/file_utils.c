@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ==     +:           */
-/*   core.h                                                -=   +-:           */
+/*   file_utils.c                                          -=   +-:           */
 /*                                                        ==-  .===           */
 /*   By: hazy_az <coding.hazyaz@proton.me>                *=*:::++*-..        */
 /*                                                        =+*=+:=**---.       */
-/*   Created: 2026/01/28 17:53:17 by hazy_az              .:=#**+--=**++:     */
-/*   Updated: 2026/02/11 15:46:03 by hazy_az             .:-#=-+*==**+-..     */
+/*   Created: 2026/02/11 15:59:52 by hazy_az              .:=#**+--=**++:     */
+/*   Updated: 2026/02/11 16:30:28 by hazy_az             .:-#=-+*==**+-..     */
 /*                                                       ..-=+==+=+--:..      */
 /*                                                       ...-===+==--::-:.    */
 /*                                                        .-:-===*+=----.     */
@@ -14,13 +14,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CORE_H
-# define CORE_H
+#include "file_utils.h"
 
-int		*grid_init(char *file);
-char	*getting_file(char *path);
-void	input_to_action(char input, int *playground, int *cursor);
-void	interpret_file(char *path, int debug);
-void	parsing_complex(char *file, int *pos, int *playground, int *cursor);
+#include <fcntl.h>
+#include <unistd.h>
 
-#endif
+#include <error.h>
+
+//Get the size of the file on set path and close it
+int	sizing(char *path)
+{
+	int		fd;
+	int		size;
+	char	buff[2];
+
+	size = 0;
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		free_close_error(path, fd, "CGFS");
+	while (read(fd, buff, 1) != 0)
+		++size;
+	close(fd);
+	return (size);
+}

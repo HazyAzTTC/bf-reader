@@ -1,5 +1,8 @@
-#Marking all test files as to be ignored
+#Marking all test. files as to be ignored
 test.*
 
-#Marking all txt files as to be ignored (for now)
+#Marking all .txt files as to be ignored
 *.txt
+
+#Marking all .old files as to be ignored
+*.old

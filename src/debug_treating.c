@@ -6,7 +6,7 @@
 /*   By: hazy_az <coding.hazyaz@proton.me>                *=*:::++*-..        */
 /*                                                        =+*=+:=**---.       */
 /*   Created: 2026/02/09 16:52:12 by hazy_az              .:=#**+--=**++:     */
-/*   Updated: 2026/02/10 03:13:38 by hazy_az             .:-#=-+*==**+-..     */
+/*   Updated: 2026/02/11 16:50:35 by hazy_az             .:-#=-+*==**+-..     */
 /*                                                       ..-=+==+=+--:..      */
 /*                                                       ...-===+==--::-:.    */
 /*                                                        .-:-===*+=----.     */
@@ -40,14 +40,16 @@ char	*fn_itoa(int number, int *grid, char *file)
 
 	div = 1000000000;
 	index = 0;
-	str = malloc(9 * 10);
+	if (number == 0)
+		return ("0");
+	str = malloc(11 * 10);
 	if (str == NULL)
 		free_all_error(file, grid, "EWTD");
-	while (div > 1)
+	while (div > 9)
 	{
 		if ((number / div) != 0 || index != 0)
 		{
-			str[index] = '0' + number;
+			str[index] = '0' + (number / div);
 			index++;
 			number = number % div;
 		}
@@ -67,10 +69,10 @@ void	*anti_debug(char *string)
 	int		size;
 	char	*temp;
 
-	size = fn_strlen(string) + 1;
-	temp = malloc(8 * size);
 	index = 0;
 	pos = 0;
+	size = fn_strlen(string) + 1;
+	temp = malloc(8 * size);
 	if (temp == NULL)
 		free_char_error(string, "FCDR");
 	while (string[index])
