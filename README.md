@@ -8,6 +8,7 @@ If you took the source code, if you are on Linux, just use the [Makefile](./MAKE
 When prompted enter the path to the file containing your Brainfuck code.<br>
 Then it will read and execute your Brainfuck code. Prompting you and displaying debug info when the code say so.<br>
 For debug info you'll have to execute program with the "debug" argument and you code must contain the # character where you want info.<br>
+If you see a "EOF & EOP" it means "End Of File & End Of Program" (it means everything executed correctly).<br>
 <br>
 More information about brainfuck language [here](https://en.wikipedia.org/wiki/Brainfuck).
 

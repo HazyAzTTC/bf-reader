@@ -6,7 +6,7 @@
 /*   By: hazy_az <coding.hazyaz@proton.me>                *=*:::++*-..        */
 /*                                                        =+*=+:=**---.       */
 /*   Created: 2026/01/28 17:51:05 by hazy_az              .:=#**+--=**++:     */
-/*   Updated: 2026/02/11 17:31:27 by hazy_az             .:-#=-+*==**+-..     */
+/*   Updated: 2026/02/11 18:47:53 by hazy_az             .:-#=-+*==**+-..     */
 /*                                                       ..-=+==+=+--:..      */
 /*                                                       ...-===+==--::-:.    */
 /*                                                        .-:-===*+=----.     */
@@ -32,7 +32,7 @@ int	*grid_init(char *file)
 	int	index;
 
 	index = 0;
-	grid = malloc(30000);
+	grid = malloc(8 * 30000);
 	if (grid == NULL)
 		free_char_error(file, "FIGM");
 	while (index < 29999)
